@@ -25,6 +25,7 @@ RUN curl http://commondatastorage.googleapis.com/git-repo-downloads/repo > /home
 RUN chmod a+x /home/cmbuild/bin/repo
 
 RUN echo "export PATH=${PATH}:/home/cmbuild/bin" >> /etc/bash.bashrc
+RUN echo "export USE_CCACHE=1" >> /etc/bash.bashrc
 
 WORKDIR /home/cmbuild/android
 VOLUME /home/cmbuild/android
