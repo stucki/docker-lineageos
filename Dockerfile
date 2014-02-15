@@ -9,7 +9,7 @@ RUN echo "deb http://archive.ubuntu.com/ubuntu precise universe" >> /etc/apt/sou
 
 ENV DEBIAN_FRONTEND noninteractive
 RUN apt-get -qq update
-RUN apt-get install -y python-software-properties curl screen
+RUN apt-get install -y python-software-properties bsdmainutils curl screen
 
 RUN add-apt-repository ppa:nilarimogard/webupd8
 RUN apt-get update
