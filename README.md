@@ -45,6 +45,10 @@ For further information, check the following links:
 * [Learning to Build CyanogenMod][Learning_to_Build_CM]
 * [Build Instructions for Google Nexus 5][CyanogenMod_Build_Nexus5] (example device, search the wiki for other devices)
 
+### More information
+
+* [Discussion thread @ XDA developers]
+
 ==================
 
 [Docker]:                      https://www.docker.io/
@@ -53,4 +57,4 @@ For further information, check the following links:
 [CyanogenMod_Building_Basics]: http://wiki.cyanogenmod.org/w/Doc:_Building_Basics
 [Learning_to_Build_CM]:        http://wiki.cyanogenmod.org/w/Development#Learning_To_Build_CM
 [CyanogenMod_Build_Nexus5]:    http://wiki.cyanogenmod.org/w/Build_for_hammerhead
-
+[Discussion thread @ XDA developers]: http://forum.xda-developers.com/showthread.php?t=2650345
