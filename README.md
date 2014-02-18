@@ -12,6 +12,8 @@ The main working directory is a shared folder on the host system, so the Docker 
 
 ### How to build
 
+**NOTE:** You will need to [install Docker][Docker_Installation] to proceed!
+
 ```
 git clone https://github.com/stucki/docker-cyanogenmod.git
 cd docker-cyanogenmod
@@ -53,6 +55,7 @@ For further information, check the following links:
 
 [Docker]:                      https://www.docker.io/
 [CyanogenMod]:                 http://www.cyanogenmod.org/
+[Docker_Installation]:         https://www.docker.io/gettingstarted/
 [Screen_Shortcuts]:            http://www.pixelbeat.org/lkdb/screen.html
 [CyanogenMod_Building_Basics]: http://wiki.cyanogenmod.org/w/Doc:_Building_Basics
 [Learning_to_Build_CM]:        http://wiki.cyanogenmod.org/w/Development#Learning_To_Build_CM
