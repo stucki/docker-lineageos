@@ -12,7 +12,10 @@ The main working directory is a shared folder on the host system, so the Docker 
 
 ### How to build
 
-**NOTE:** You will need to [install Docker][Docker_Installation] to proceed!
+**NOTES:**
+* You will need to [install Docker][Docker_Installation] to proceed!
+* When running ```docker build```, the whole folder incl. the "android" working directory is transferred to the Docker daemon. The only way to work around this currently is to move the "android" folder away, then rebuild, and move it back into place again.
+For more information, see [dotcloud/docker#2224].
 
 ```
 git clone https://github.com/stucki/docker-cyanogenmod.git
@@ -62,3 +65,4 @@ For further information, check the following links:
 [Learning_to_Build_CM]:        http://wiki.cyanogenmod.org/w/Development#Learning_To_Build_CM
 [CyanogenMod_Build_Nexus5]:    http://wiki.cyanogenmod.org/w/Build_for_hammerhead
 [Discussion thread @ XDA developers]: http://forum.xda-developers.com/showthread.php?t=2650345
+[dotcloud/docker#2224]:        https://github.com/dotcloud/docker/issues/2224
