@@ -10,7 +10,7 @@ RUN grep -q "universe" /etc/apt/sources.list || echo "deb http://archive.ubuntu.
 
 ENV DEBIAN_FRONTEND noninteractive
 RUN apt-get -qq update
-RUN apt-get install -y python-software-properties bsdmainutils curl screen
+RUN apt-get install -y python-software-properties bsdmainutils curl file screen
 
 RUN add-apt-repository ppa:nilarimogard/webupd8
 RUN apt-get update
