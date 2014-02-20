@@ -5,7 +5,8 @@
 FROM ubuntu:12.04
 MAINTAINER Michael Stucki <mundaun@gmx.ch>
 
-RUN echo "deb http://archive.ubuntu.com/ubuntu precise universe" >> /etc/apt/sources.list
+# Newer images of ubuntu:12.04 already contain this entry, and if the line appears twice in the file, apt would throw a warning.
+RUN grep -q "universe" /etc/apt/sources.list || echo "deb http://archive.ubuntu.com/ubuntu precise universe" >> /etc/apt/sources.list
 
 ENV DEBIAN_FRONTEND noninteractive
 RUN apt-get -qq update
