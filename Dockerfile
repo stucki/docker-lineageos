@@ -20,6 +20,10 @@ RUN apt-get install -y bison build-essential curl flex git-core gnupg gperf libe
 RUN apt-get install -y g++-multilib gcc-multilib lib32ncurses5-dev lib32readline-gplv2-dev lib32z1-dev
 RUN apt-get install -y tig
 
+# Workaround for apt-get upgrade issue described here: https://github.com/dotcloud/docker/issues/1724
+# If you still have problems with upgrading this image, you most likely use an outdated base image
+RUN dpkg-divert --local --rename /usr/bin/ischroot && ln -sf /bin/true /usr/bin/ischroot
+
 RUN useradd --create-home cmbuild
 
 RUN mkdir /home/cmbuild/bin
