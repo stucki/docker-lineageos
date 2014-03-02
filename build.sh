@@ -7,6 +7,6 @@ SOURCE=$(pwd)/android
 # Create a shared folder which will be used as working directory.
 test -d $SOURCE || mkdir $SOURCE
 
-docker build -t stucki/cyanogenmod .
+docker build --no-cache -t stucki/cyanogenmod .
 
 exit $?
