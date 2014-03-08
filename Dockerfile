@@ -5,10 +5,9 @@
 FROM ubuntu:12.04
 MAINTAINER Michael Stucki <mundaun@gmx.ch>
 
-# Newer images of ubuntu:12.04 already contain this entry, and if the line appears twice in the file, apt would throw a warning.
-RUN grep -q "universe" /etc/apt/sources.list || echo "deb http://archive.ubuntu.com/ubuntu precise universe" >> /etc/apt/sources.list
-
 ENV DEBIAN_FRONTEND noninteractive
+
+RUN sed -i 's/main$/main universe/' /etc/apt/sources.list
 RUN apt-get -qq update
 RUN apt-get install -y python-software-properties bsdmainutils curl file screen
 
