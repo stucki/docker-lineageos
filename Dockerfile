@@ -24,6 +24,7 @@ RUN dpkg-divert --local --rename /usr/bin/ischroot && ln -sf /bin/true /usr/bin/
 # Workaround for screen: /usr/bin/screen cannot be installed with setgid "utmp": https://github.com/stucki/docker-cyanogenmod/issues/2
 # Install screen with setuid root instead (that's ok on a single-user system)
 RUN chmod u+s /usr/bin/screen
+RUN chmod 755 /var/run/screen
 
 RUN apt-get -qqy upgrade
 
