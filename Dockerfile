@@ -1,6 +1,4 @@
 # Build environment for CyanogenMod
-#
-# VERSION               0.1
 
 FROM ubuntu:14.04
 MAINTAINER Michael Stucki <mundaun@gmx.ch>
