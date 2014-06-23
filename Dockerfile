@@ -2,7 +2,7 @@
 #
 # VERSION               0.1
 
-FROM ubuntu:12.04
+FROM ubuntu:14.04
 MAINTAINER Michael Stucki <mundaun@gmx.ch>
 
 ENV DEBIAN_FRONTEND noninteractive
@@ -10,7 +10,7 @@ ENV DEBIAN_FRONTEND noninteractive
 RUN sed -i 's/main$/main universe/' /etc/apt/sources.list
 RUN apt-get -qq update
 
-RUN apt-get install -y python-software-properties bsdmainutils curl file screen
+RUN apt-get install -y software-properties-common bsdmainutils curl file screen
 RUN add-apt-repository ppa:nilarimogard/webupd8
 RUN apt-get -qq update
 
