@@ -3,13 +3,14 @@
 cd $(dirname $0)
 
 SOURCE=$(pwd)/android
+CCACHE=$(pwd)/ccache
 CONTAINER_HOME=/home/cmbuild
 CONTAINER=cyanogenmod
 REPOSITORY=stucki/cyanogenmod
 
-# Create a shared folder which will be used as working directory if it
-# does not already exist.
+# Create shared folders
 mkdir -p $SOURCE
+mkdir -p $CCACHE
 
 # Build image if needed
 IMAGE_EXISTS=$(docker images -q $REPOSITORY)
@@ -28,7 +29,7 @@ if [[ $IS_RUNNING == "true" ]]; then
 elif [[ $IS_RUNNING == "false" ]]; then
 	docker start -i $CONTAINER
 else
-	docker run -v $SOURCE:$CONTAINER_HOME/android -i -t --name $CONTAINER $REPOSITORY sh -c "screen -s /bin/bash"
+	docker run -v $SOURCE:$CONTAINER_HOME/android -v $CCACHE:/srv/ccache -i -t --name $CONTAINER $REPOSITORY sh -c "screen -s /bin/bash"
 fi
 
 exit $?
