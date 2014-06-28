@@ -31,8 +31,8 @@ RUN mkdir /home/cmbuild/bin
 RUN curl http://commondatastorage.googleapis.com/git-repo-downloads/repo > /home/cmbuild/bin/repo
 RUN chmod a+x /home/cmbuild/bin/repo
 
-RUN echo "export PATH=${PATH}:/home/cmbuild/bin" >> /etc/bash.bashrc
-RUN echo "export USE_CCACHE=1" >> /etc/bash.bashrc
+ADD android-env-vars.sh /etc/android-env-vars.sh
+RUN echo "source /etc/android-env-vars.sh" >> /etc/bash.bashrc
 
 WORKDIR /home/cmbuild/android
 VOLUME /home/cmbuild/android
