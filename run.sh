@@ -18,6 +18,7 @@ if [ $? -ne 0 ]; then
 	echo "docker command not found"
 	exit $?
 elif [[ -z $IMAGE_EXISTS ]]; then
+	echo "Building Docker image $REPOSITORY..."
 	docker build --no-cache --rm -t $REPOSITORY .
 fi
 
