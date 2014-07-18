@@ -7,8 +7,8 @@ CONTAINER_HOME=/home/cmbuild
 CONTAINER=cyanogenmod
 REPOSITORY=stucki/cyanogenmod
 
-# Create a shared folder which will be used as working directory if it 
-# does not already exists.
+# Create a shared folder which will be used as working directory if it
+# does not already exist.
 mkdir -p $SOURCE
 
 # Build image if needed
@@ -20,15 +20,15 @@ elif [[ -z $IMAGE_EXISTS ]]; then
 	docker build --no-cache --rm -t $REPOSITORY .
 fi
 
-# With the given name $CONTAINER, reconnect to running container, start 
-# an existing/stopped container or run a new one if one does not exists.
+# With the given name $CONTAINER, reconnect to running container, start
+# an existing/stopped container or run a new one if one does not exist.
 IS_RUNNING=$(docker inspect -f '{{.State.Running}}' $CONTAINER 2>/dev/null)
 if [[ $IS_RUNNING == "true" ]]; then
 	docker attach $CONTAINER
 elif [[ $IS_RUNNING == "false" ]]; then
 	docker start -i $CONTAINER
 else
-	docker run -v $SOURCE:$CONTAINER_HOME/android -i -t --name $CONTAINER $REPOSITORY sh -c "screen -s /bin/bash";
+	docker run -v $SOURCE:$CONTAINER_HOME/android -i -t --name $CONTAINER $REPOSITORY sh -c "screen -s /bin/bash"
 fi
 
 exit $?
