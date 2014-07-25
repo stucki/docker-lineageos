@@ -3,7 +3,7 @@ docker-cyanogenmod
 
 Create a [Docker] based environment to build [CyanogenMod].
 
-This Dockerfile will create a docker container which is based on Ubuntu 12.04.
+This Dockerfile will create a docker container which is based on Ubuntu 14.04.
 It will install the "repo" utility and any other build dependencies which are required to compile CyanogenMod.
 
 The main working directory is a shared folder on the host system, so the Docker container can be removed at any time.
