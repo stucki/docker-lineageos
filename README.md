@@ -15,8 +15,6 @@ The main working directory is a shared folder on the host system, so the Docker 
 **NOTES:**
 * You will need to [install Docker][Docker_Installation] to proceed!
 * If an image does not exist, ```docker build``` is executed first
-* When running ```docker build```, the whole folder incl. the "android" working directory is transferred to the Docker daemon. The only way to work around this currently is to move the "android" folder away, then rebuild, and move it back into place again.
-For more information, see [dotcloud/docker#2224].
 
 ```
 git clone https://github.com/stucki/docker-cyanogenmod.git
