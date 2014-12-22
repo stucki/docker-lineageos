@@ -7,6 +7,7 @@ CCACHE=$(pwd)/ccache
 CONTAINER_HOME=/home/cmbuild
 CONTAINER=cyanogenmod
 REPOSITORY=stucki/cyanogenmod
+FORCE_BUILD=0
 
 # Create shared folders
 mkdir -p $SOURCE
@@ -17,7 +18,7 @@ IMAGE_EXISTS=$(docker images -q $REPOSITORY)
 if [ $? -ne 0 ]; then
 	echo "docker command not found"
 	exit $?
-elif [[ -z $IMAGE_EXISTS ]]; then
+elif [[ -z $IMAGE_EXISTS ]] || [[ $FORCE_BUILD = 1 ]]; then
 	echo "Building Docker image $REPOSITORY..."
 	docker build --no-cache --rm -t $REPOSITORY .
 fi
