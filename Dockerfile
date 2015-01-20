@@ -12,7 +12,7 @@ RUN apt-get install -y bsdmainutils curl file screen
 RUN apt-get install -y android-tools-adb android-tools-fastboot
 RUN apt-get install -y bison build-essential flex git gnupg gperf libesd0-dev libncurses5-dev libsdl1.2-dev libwxgtk2.8-dev libxml2 libxml2-utils lzop openjdk-7-jdk openjdk-7-jre pngcrush schedtool squashfs-tools xsltproc zip zlib1g-dev
 RUN apt-get install -y ccache g++-multilib gcc-multilib lib32ncurses5-dev lib32readline-gplv2-dev lib32z1-dev
-RUN apt-get install -y tig
+RUN apt-get install -y tig rsync
 
 # Workaround for apt-get upgrade issue described here: https://github.com/dotcloud/docker/issues/1724
 # If you still have problems with upgrading this image, you most likely use an outdated base image
