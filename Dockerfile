@@ -25,7 +25,6 @@ RUN chmod 755 /var/run/screen
 
 RUN apt-get -qqy upgrade
 
-RUN useradd --create-home cmbuild
 RUN mkdir -p /home/cmbuild && useradd --no-create-home cmbuild && rsync -a /etc/skel/ /home/cmbuild/ && chown -R cmbuild:cmbuild /home/cmbuild
 
 RUN mkdir /home/cmbuild/bin
