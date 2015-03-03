@@ -20,7 +20,7 @@ if [ $? -ne 0 ]; then
 	exit $?
 elif [[ -z $IMAGE_EXISTS ]] || [[ $FORCE_BUILD = 1 ]]; then
 	echo "Building Docker image $REPOSITORY..."
-	docker build --no-cache --rm -t $REPOSITORY .
+	docker build -t $REPOSITORY .
 fi
 
 # With the given name $CONTAINER, reconnect to running container, start
