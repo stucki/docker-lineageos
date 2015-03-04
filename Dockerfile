@@ -44,8 +44,6 @@ RUN chmod a+x /root/startup.sh
 ADD android-env-vars.sh /etc/android-env-vars.sh
 RUN echo "source /etc/android-env-vars.sh" >> /etc/bash.bashrc
 
-WORKDIR /home/cmbuild/android
-
 VOLUME /home/cmbuild/android
 VOLUME /srv/ccache
 
@@ -53,3 +51,4 @@ CMD /root/startup.sh
 
 # This does not work yet, see https://github.com/docker/docker/issues/9806
 #USER cmbuild
+#WORKDIR /home/cmbuild/android
