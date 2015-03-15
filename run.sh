@@ -7,6 +7,7 @@ CCACHE=$(pwd)/ccache
 CONTAINER_HOME=/home/cmbuild
 CONTAINER=cyanogenmod
 REPOSITORY=stucki/cyanogenmod
+TAG=cm-12.1
 FORCE_BUILD=0
 
 # Create shared folders
@@ -14,13 +15,13 @@ mkdir -p $SOURCE
 mkdir -p $CCACHE
 
 # Build image if needed
-IMAGE_EXISTS=$(docker images -q $REPOSITORY)
+IMAGE_EXISTS=$(docker images $REPOSITORY | grep "$TAG")
 if [ $? -ne 0 ]; then
 	echo "docker command not found"
 	exit $?
 elif [[ -z $IMAGE_EXISTS ]] || [[ $FORCE_BUILD = 1 ]]; then
-	echo "Building Docker image $REPOSITORY..."
-	docker build -t $REPOSITORY .
+	echo "Building Docker image $REPOSITORY:$TAG..."
+	docker build -t $REPOSITORY:$TAG .
 fi
 
 # With the given name $CONTAINER, reconnect to running container, start
@@ -31,7 +32,7 @@ if [[ $IS_RUNNING == "true" ]]; then
 elif [[ $IS_RUNNING == "false" ]]; then
 	docker start -i $CONTAINER
 else
-	docker run -v $SOURCE:$CONTAINER_HOME/android -v $CCACHE:/srv/ccache -i -t --name $CONTAINER $REPOSITORY
+	docker run -v $SOURCE:$CONTAINER_HOME/android -v $CCACHE:/srv/ccache -i -t --name $CONTAINER $REPOSITORY:$TAG
 fi
 
 exit $?
