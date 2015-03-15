@@ -2,6 +2,7 @@
 
 # Initialize ccache if needed
 if [ ! -f /srv/ccache/CACHEDIR.TAG ]; then
+	echo "Initializing ccache in /srv/ccache..."
 	CCACHE_DIR=/srv/ccache ccache -M 50G
 fi
 
@@ -10,6 +11,7 @@ fi
 # For performance reasons, only search on the first level.
 for i in "/home/cmbuild/android" "/srv/ccache"; do
 	if [ $(find $i -maxdepth 1 -user root | wc -l) -gt 0 ]; then
+		echo "Fixing permissions on $i..."
 		chown -R cmbuild:cmbuild $i
 	fi
 done
