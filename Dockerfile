@@ -49,8 +49,6 @@ WORKDIR /home/cmbuild/android
 VOLUME /home/cmbuild/android
 VOLUME /srv/ccache
 
-RUN CCACHE_DIR=/srv/ccache ccache -M 50G
-
 CMD /root/startup.sh
 
 # This does not work yet, see https://github.com/docker/docker/issues/9806
