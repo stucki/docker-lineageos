@@ -15,11 +15,11 @@ mkdir -p $SOURCE
 mkdir -p $CCACHE
 
 # Build image if needed
-IMAGE_EXISTS=$(docker images $REPOSITORY | grep "$TAG")
+IMAGE_EXISTS=$(docker images $REPOSITORY)
 if [ $? -ne 0 ]; then
 	echo "docker command not found"
 	exit $?
-elif [[ -z $IMAGE_EXISTS ]] || [[ $FORCE_BUILD = 1 ]]; then
+elif [[ $FORCE_BUILD = 1 ]] || ! echo "$IMAGE_EXISTS" | grep -q "$TAG"; then
 	echo "Building Docker image $REPOSITORY:$TAG..."
 	docker build -t $REPOSITORY:$TAG .
 fi
