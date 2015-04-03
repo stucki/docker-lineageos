@@ -22,6 +22,12 @@ if [ $? -ne 0 ]; then
 elif [[ $FORCE_BUILD = 1 ]] || ! echo "$IMAGE_EXISTS" | grep -q "$TAG"; then
 	echo "Building Docker image $REPOSITORY:$TAG..."
 	docker build -t $REPOSITORY:$TAG .
+
+	# After successful build, delete existing containers
+	IS_EXISTING=$(docker inspect -f '{{.Id}}' $CONTAINER 2>/dev/null)
+	if [[ -n "$IS_EXISTING" ]]; then
+		docker rm $CONTAINER
+	fi
 fi
 
 # With the given name $CONTAINER, reconnect to running container, start

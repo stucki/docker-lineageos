@@ -5,6 +5,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ## [Unreleased][unreleased]
 ### Fixed
 - Fix check if build is needed
+- After successful build, delete existing containers
 
 ## [0.3.0] - 2015-03-31
 ### Added
