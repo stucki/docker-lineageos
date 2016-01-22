@@ -4,6 +4,11 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased][unreleased]
 
+## [0.4.0] - 2016-01-22
+### Added
+- Adjust CyanogenMod version to cm-13.0
+- Install liblz4-tool + bc (required for building CyanogenMod)
+
 ## [0.3.1] - 2015-04-03
 ### Fixed
 - Fix check if build is needed
