@@ -7,7 +7,7 @@ CCACHE=$(pwd)/ccache
 CONTAINER_HOME=/home/cmbuild
 CONTAINER=cyanogenmod
 REPOSITORY=stucki/cyanogenmod
-TAG=cm-12.1
+TAG=cm-13.0
 FORCE_BUILD=0
 
 # Create shared folders
