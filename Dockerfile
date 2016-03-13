@@ -18,11 +18,6 @@ RUN apt-get install -y tig rsync
 # If you still have problems with upgrading this image, you most likely use an outdated base image
 RUN dpkg-divert --local --rename /usr/bin/ischroot && ln -sf /bin/true /usr/bin/ischroot
 
-# Workaround for screen: /usr/bin/screen cannot be installed with setgid "utmp": https://github.com/stucki/docker-cyanogenmod/issues/2
-# Install screen with setuid root instead (that's ok on a single-user system)
-RUN chmod u+s /usr/bin/screen
-RUN chmod 755 /var/run/screen
-
 RUN apt-get -qqy upgrade
 
 RUN mkdir -p /home/cmbuild && useradd --no-create-home cmbuild && rsync -a /etc/skel/ /home/cmbuild/
