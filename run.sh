@@ -20,6 +20,10 @@ if [ $? -ne 0 ]; then
 	echo "docker command not found"
 	exit $?
 elif [[ $FORCE_BUILD = 1 ]] || ! echo "$IMAGE_EXISTS" | grep -q "$TAG"; then
+	# Pull Ubuntu image to be sure it's up to date
+	echo "Fetching Docker \"ubuntu\" image..."
+	docker pull ubuntu:14.04
+
 	echo "Building Docker image $REPOSITORY:$TAG..."
 	docker build -t $REPOSITORY:$TAG .
 
