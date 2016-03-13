@@ -34,11 +34,11 @@ RUN chmod a+x /home/cmbuild/bin/repo
 # Add sudo permission
 RUN echo "cmbuild ALL=NOPASSWD: ALL" > /etc/sudoers.d/cmbuild
 
+ADD startup.sh /home/cmbuild/startup.sh
+RUN chmod a+x /home/cmbuild/startup.sh
+
 # Fix ownership
 RUN chown -R cmbuild:cmbuild /home/cmbuild
-
-ADD startup.sh /root/startup.sh
-RUN chmod a+x /root/startup.sh
 
 # Set global variables
 ADD android-env-vars.sh /etc/android-env-vars.sh
@@ -47,8 +47,7 @@ RUN echo "source /etc/android-env-vars.sh" >> /etc/bash.bashrc
 VOLUME /home/cmbuild/android
 VOLUME /srv/ccache
 
-CMD /root/startup.sh
+CMD /home/cmbuild/startup.sh
 
-# This does not work yet, see https://github.com/docker/docker/issues/9806
-#USER cmbuild
-#WORKDIR /home/cmbuild/android
+USER cmbuild
+WORKDIR /home/cmbuild/android
