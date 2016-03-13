@@ -14,10 +14,6 @@ RUN apt-get install -y bison build-essential flex git gnupg gperf libesd0-dev li
 RUN apt-get install -y ccache g++-multilib gcc-multilib lib32ncurses5-dev lib32readline-gplv2-dev lib32z1-dev
 RUN apt-get install -y tig rsync
 
-# Workaround for apt-get upgrade issue described here: https://github.com/dotcloud/docker/issues/1724
-# If you still have problems with upgrading this image, you most likely use an outdated base image
-RUN dpkg-divert --local --rename /usr/bin/ischroot && ln -sf /bin/true /usr/bin/ischroot
-
 RUN apt-get -qqy upgrade
 
 RUN mkdir -p /home/cmbuild && useradd --no-create-home cmbuild && rsync -a /etc/skel/ /home/cmbuild/
