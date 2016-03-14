@@ -6,5 +6,7 @@ if [ ! -f /srv/ccache/CACHEDIR.TAG ]; then
 	CCACHE_DIR=/srv/ccache ccache -M 50G
 fi
 
+export USER="cmbuild"
+
 # Launch screen session
 screen -s /bin/bash
