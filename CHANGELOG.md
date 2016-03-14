@@ -4,6 +4,18 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased][unreleased]
 
+## [0.5.0] - 2016-03-14
+### Added
+- Install maven (now required for building CyanogenMod)
+- Remove workaround for running as non-root (no longer needed)
+- Remove workaround for ischroot (no longer needed)
+- Remove a permission fix (no longer needed)
+- build: Sync package list with CyanogenMod Wiki
+
+### Fixed
+- build: Always pull Ubuntu image during Docker build to be sure it's up
+  to date
+
 ## [0.4.0] - 2016-01-22
 ### Added
 - Adjust CyanogenMod version to cm-13.0
