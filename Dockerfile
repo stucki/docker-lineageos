@@ -17,8 +17,9 @@ RUN apt-get install -y g++-multilib gcc-multilib lib32ncurses5-dev lib32readline
 RUN apt-get install -y ccache rsync tig
 RUN apt-get install -y android-tools-adb android-tools-fastboot
 RUN apt-get install -y bc bsdmainutils file screen
+RUN apt-get install -y bash-completion wget nano
 
-RUN mkdir -p /home/cmbuild && useradd --no-create-home cmbuild && rsync -a /etc/skel/ /home/cmbuild/
+RUN useradd cmbuild && rsync -a /etc/skel/ /home/cmbuild/
 
 RUN mkdir /home/cmbuild/bin
 RUN curl http://commondatastorage.googleapis.com/git-repo-downloads/repo > /home/cmbuild/bin/repo

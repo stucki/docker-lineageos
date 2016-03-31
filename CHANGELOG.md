@@ -6,6 +6,8 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ### Added
 - Use -f to force rebuild the source.
 - If build fails don't remove intermediate containers
+- Added bash completion, wget and nano
+- Simplier home creation
 
 ## [0.5.0] - 2016-03-14
 ### Added
