@@ -31,8 +31,8 @@ shift
 done
 
 # Create shared folders
-[[ -e "$SOURCE" ]] || mkdir -p $SOURCE
-[[ -e "$CCACHE" ]] || mkdir -p $CCACHE
+mkdir -p $SOURCE
+mkdir -p $CCACHE
 
 # Build image if needed
 IMAGE_EXISTS=$(docker images $REPOSITORY)
