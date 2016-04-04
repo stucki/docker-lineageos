@@ -19,7 +19,7 @@ case $key in
     -r|--rebuild)
     FORCE_BUILD=1
     ;;
-    -p|--privileged)
+    -u|--enable-usb)
     PRIVILEGED="--privileged -v /dev/bus/usb:/dev/bus/usb"
     ;;
     *)
