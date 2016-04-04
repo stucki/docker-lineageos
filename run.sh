@@ -11,23 +11,20 @@ TAG=cm-13.0
 FORCE_BUILD=0
 PRIVILEGED=
 
-while [[ $# > 0 ]]
-do
-key="$1"
-
-case $key in
-    -r|--rebuild)
-    FORCE_BUILD=1
-    ;;
-    -u|--enable-usb)
-    PRIVILEGED="--privileged -v /dev/bus/usb:/dev/bus/usb"
-    ;;
-    *)
-    shift # past argument or value
-    ;;
-esac
-shift
-
+while [[ $# > 0 ]]; do
+	key="$1"
+	case $key in
+		-r|--rebuild)
+			FORCE_BUILD=1
+			;;
+		-u|--enable-usb)
+			PRIVILEGED="--privileged -v /dev/bus/usb:/dev/bus/usb"
+			;;
+		*)
+			shift # past argument or value
+			;;
+	esac
+	shift
 done
 
 # Create shared folders
