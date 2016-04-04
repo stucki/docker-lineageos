@@ -9,4 +9,4 @@ fi
 export USER="cmbuild"
 
 # Launch screen session
-screen -s /bin/bash
+/bin/bash --login
