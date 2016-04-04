@@ -22,6 +22,11 @@ cd docker-cyanogenmod
 ./run.sh
 ```
 
+The `run.sh` script accepts the following switches:
+
+* -p|--privileged - runs the container in privileged mode (this way you can use usb debugging right from the container)
+* -r|--rebuild - force rebuild the image from scratch
+
 The container uses "screen" to run the shell. This means that you will be able to open additional shells using [screen keyboard shortcuts][Screen_Shortcuts].
 
 ### How to build CyanogenMod for your device
