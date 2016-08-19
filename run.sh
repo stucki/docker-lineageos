@@ -39,7 +39,7 @@ if [ $? -ne 0 ]; then
 elif [[ $FORCE_BUILD = 1 ]] || ! echo "$IMAGE_EXISTS" | grep -q "$TAG"; then
 	# Pull Ubuntu image to be sure it's up to date
 	echo "Fetching Docker \"ubuntu\" image..."
-	docker pull ubuntu:14.04
+	docker pull ubuntu:16.04
 
 	echo "Building Docker image $REPOSITORY:$TAG..."
 	docker build -t $REPOSITORY:$TAG .
