@@ -4,8 +4,10 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased][unreleased]
 ### Added
-- Use -f to force rebuild the source.
-- If build fails don't remove intermediate containers
+- Switch build OS to Ubuntu 16.04
+- Add -r switch in run.sh to force a rebuild of the Docker image
+- Add -u switch in run.sh to enable USB inside the container
+- If build fails, don't remove intermediate containers
 - Added bash completion, wget and nano
 - Simplier home creation
 
