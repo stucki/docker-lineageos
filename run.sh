@@ -2,8 +2,14 @@
 
 cd $(dirname $0)
 
-SOURCE=$(readlink -f $(pwd)/android)
-CCACHE=$(readlink -f $(pwd)/ccache)
+if [[ $OSTYPE == "darwin"* ]]; then
+	SOURCE=$(stat -f %N $(pwd)/android)
+	CCACHE=$(stat -f %N $(pwd)/ccache)
+else
+	SOURCE=$(readlink -f $(pwd)/android)
+	CCACHE=$(readlink -f $(pwd)/ccache)
+fi
+
 CONTAINER_HOME=/home/cmbuild
 CONTAINER=cyanogenmod
 REPOSITORY=stucki/cyanogenmod
