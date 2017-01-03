@@ -13,7 +13,7 @@ fi
 CONTAINER_HOME=/home/build
 CONTAINER=lineageos
 REPOSITORY=stucki/lineageos
-TAG=cm-13.0
+TAG=cm-14.1
 FORCE_BUILD=0
 PRIVILEGED=
 

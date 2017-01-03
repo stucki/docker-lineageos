@@ -32,7 +32,7 @@ The container uses "screen" to run the shell. This means that you will be able t
 ### How to build LineageOS for your device
 
 ```
-repo init -u git://github.com/lineageos/android.git -b cm-13.0
+repo init -u git://github.com/lineageos/android.git -b cm-14.1
 repo sync
 source build/envsetup.sh
 breakfast <device codename>   # example: breakfast grouper

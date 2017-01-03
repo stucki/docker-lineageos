@@ -7,6 +7,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Rename the project from "docker-cyanogenmod" to "docker-lineageos"
 - Change all references of "CyanogenMod" to "LineageOS", see http://lineageos.org/
 - Rename user "cmbuild" to "build"
+- Adjust LineageOS version to cm-14.1
 
 ## [0.6.0] - 2016-08-20
 ### Added
