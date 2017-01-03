@@ -21,29 +21,29 @@ RUN apt-get install -y android-tools-adb android-tools-fastboot
 RUN apt-get install -y bc bsdmainutils file screen
 RUN apt-get install -y bash-completion wget nano
 
-RUN useradd cmbuild && rsync -a /etc/skel/ /home/cmbuild/
+RUN useradd build && rsync -a /etc/skel/ /home/build/
 
-RUN mkdir /home/cmbuild/bin
-RUN curl http://commondatastorage.googleapis.com/git-repo-downloads/repo > /home/cmbuild/bin/repo
-RUN chmod a+x /home/cmbuild/bin/repo
+RUN mkdir /home/build/bin
+RUN curl http://commondatastorage.googleapis.com/git-repo-downloads/repo > /home/build/bin/repo
+RUN chmod a+x /home/build/bin/repo
 
 # Add sudo permission
-RUN echo "cmbuild ALL=NOPASSWD: ALL" > /etc/sudoers.d/cmbuild
+RUN echo "build ALL=NOPASSWD: ALL" > /etc/sudoers.d/build
 
-ADD startup.sh /home/cmbuild/startup.sh
-RUN chmod a+x /home/cmbuild/startup.sh
+ADD startup.sh /home/build/startup.sh
+RUN chmod a+x /home/build/startup.sh
 
 # Fix ownership
-RUN chown -R cmbuild:cmbuild /home/cmbuild
+RUN chown -R build:build /home/build
 
 # Set global variables
 ADD android-env-vars.sh /etc/android-env-vars.sh
 RUN echo "source /etc/android-env-vars.sh" >> /etc/bash.bashrc
 
-VOLUME /home/cmbuild/android
+VOLUME /home/build/android
 VOLUME /srv/ccache
 
-CMD /home/cmbuild/startup.sh
+CMD /home/build/startup.sh
 
-USER cmbuild
-WORKDIR /home/cmbuild/android
+USER build
+WORKDIR /home/build/android

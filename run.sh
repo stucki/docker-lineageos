@@ -10,7 +10,7 @@ else
 	CCACHE=$(readlink -f $(pwd)/ccache)
 fi
 
-CONTAINER_HOME=/home/cmbuild
+CONTAINER_HOME=/home/build
 CONTAINER=cyanogenmod
 REPOSITORY=stucki/cyanogenmod
 TAG=cm-13.0
