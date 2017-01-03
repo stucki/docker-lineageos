@@ -1,7 +1,7 @@
 # Build environment for CyanogenMod
 
 FROM ubuntu:16.04
-MAINTAINER Michael Stucki <mundaun@gmx.ch>
+MAINTAINER Michael Stucki <michael@stucki.io>
 
 ENV DEBIAN_FRONTEND noninteractive
 
