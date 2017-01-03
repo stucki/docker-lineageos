@@ -4,6 +4,8 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased][unreleased]
 ### Added
+- Rename the project from "docker-cyanogenmod" to "docker-lineageos"
+- Change all references of "CyanogenMod" to "LineageOS", see http://lineageos.org/
 - Rename user "cmbuild" to "build"
 
 ## [0.6.0] - 2016-08-20

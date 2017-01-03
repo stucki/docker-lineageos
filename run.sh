@@ -11,8 +11,8 @@ else
 fi
 
 CONTAINER_HOME=/home/build
-CONTAINER=cyanogenmod
-REPOSITORY=stucki/cyanogenmod
+CONTAINER=lineageos
+REPOSITORY=stucki/lineageos
 TAG=cm-13.0
 FORCE_BUILD=0
 PRIVILEGED=

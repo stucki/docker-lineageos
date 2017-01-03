@@ -1,14 +1,14 @@
-docker-cyanogenmod
+docker-lineageos
 ==================
 
-Create a [Docker] based environment to build [CyanogenMod].
+Create a [Docker] based environment to build [LineageOS].
 
 This Dockerfile will create a docker container which is based on Ubuntu 14.04.
-It will install the "repo" utility and any other build dependencies which are required to compile CyanogenMod.
+It will install the "repo" utility and any other build dependencies which are required to compile LineageOS (formerly known as CyanogenMod).
 
 The main working directory is a shared folder on the host system, so the Docker container can be removed at any time.
 
-**NOTE:** Remember that CyanogenMod is a huge project. It will consume a large amount of disk space (~80 GB) and it can easily take hours to build.
+**NOTE:** Remember that LineageOS is a huge project. It will consume a large amount of disk space (~80 GB) and it can easily take hours to build.
 
 ### How to run/build
 
@@ -17,8 +17,8 @@ The main working directory is a shared folder on the host system, so the Docker 
 * If an image does not exist, ```docker build``` is executed first
 
 ```
-git clone https://github.com/stucki/docker-cyanogenmod.git
-cd docker-cyanogenmod
+git clone https://github.com/stucki/docker-lineageos.git
+cd docker-lineageos
 ./run.sh
 ```
 
@@ -29,10 +29,10 @@ The `run.sh` script accepts the following switches:
 
 The container uses "screen" to run the shell. This means that you will be able to open additional shells using [screen keyboard shortcuts][Screen_Shortcuts].
 
-### How to build CyanogenMod for your device
+### How to build LineageOS for your device
 
 ```
-repo init -u git://github.com/CyanogenMod/android.git -b cm-13.0
+repo init -u git://github.com/lineageos/android.git -b cm-13.0
 repo sync
 source build/envsetup.sh
 breakfast <device codename>   # example: breakfast grouper
@@ -54,7 +54,7 @@ For further information, check the following links:
 ==================
 
 [Docker]:                      https://www.docker.io/
-[CyanogenMod]:                 http://www.cyanogenmod.org/
+[LineageOS]:                   http://lineageos.org/
 [Docker_Installation]:         https://www.docker.io/gettingstarted/
 [Screen_Shortcuts]:            http://www.pixelbeat.org/lkdb/screen.html
 [CyanogenMod_Building_Basics]: http://wiki.cyanogenmod.org/w/Doc:_Building_Basics
