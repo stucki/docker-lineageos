@@ -16,7 +16,7 @@ RUN apt-get install -y bison build-essential curl flex git gnupg gperf libesd0-d
 RUN apt-get install -y g++-multilib gcc-multilib lib32ncurses5-dev lib32readline6-dev lib32z1-dev
 
 # Install additional packages which are useful for building Android
-RUN apt-get install -y ccache rsync tig sudo
+RUN apt-get install -y ccache rsync tig sudo imagemagick
 RUN apt-get install -y android-tools-adb android-tools-fastboot
 RUN apt-get install -y bc bsdmainutils file screen
 RUN apt-get install -y bash-completion wget nano
