@@ -3,7 +3,7 @@ docker-lineageos
 
 Create a [Docker] based environment to build [LineageOS].
 
-This Dockerfile will create a docker container which is based on Ubuntu 14.04.
+This Dockerfile will create a docker container which is based on Ubuntu 16.04.
 It will install the "repo" utility and any other build dependencies which are required to compile LineageOS (formerly known as CyanogenMod).
 
 The main working directory is a shared folder on the host system, so the Docker container can be removed at any time.
