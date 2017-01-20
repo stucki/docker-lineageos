@@ -33,7 +33,7 @@ The container uses "screen" to run the shell. This means that you will be able t
 
 ```
 repo init -u git://github.com/lineageos/android.git -b cm-14.1
-repo sync
+repo sync -c -j 16
 source build/envsetup.sh
 breakfast <device codename>   # example: breakfast grouper
 brunch <device codename>      # example: brunch grouper
