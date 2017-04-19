@@ -48,7 +48,9 @@ elif [[ $FORCE_BUILD = 1 ]] || ! echo "$IMAGE_EXISTS" | grep -q "$TAG"; then
 	docker pull ubuntu:16.04
 
 	echo "Building Docker image $REPOSITORY:$TAG..."
-	docker build -t $REPOSITORY:$TAG .
+	USERID=$(id -u)
+	GROUPID=$(id -g)
+	docker build -t $REPOSITORY:$TAG --build-arg hostuid=$USERID --build-arg hostgid=$GROUPID .
 	OK=$?
 
 	# After successful build, delete existing containers
