@@ -21,7 +21,13 @@ RUN apt-get install -y android-tools-adb android-tools-fastboot
 RUN apt-get install -y bc bsdmainutils file screen
 RUN apt-get install -y bash-completion wget nano
 
-RUN useradd build && rsync -a /etc/skel/ /home/build/
+ARG hostuid=1000
+ARG hostgid=1000
+
+RUN \
+    groupadd build -g $hostgid && \
+    useradd build -g $hostgid -u $hostuid && \
+    rsync -a /etc/skel/ /home/build/
 
 RUN mkdir /home/build/bin
 RUN curl http://commondatastorage.googleapis.com/git-repo-downloads/repo > /home/build/bin/repo
