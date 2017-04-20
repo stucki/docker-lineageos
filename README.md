@@ -44,8 +44,7 @@ brunch <device codename>      # example: brunch grouper
 For further information, check the following links:
 
 * [CyanogenMod Building Basics][Cyanogenmod_Building_Basics]
-* [Learning to Build CyanogenMod][Learning_to_Build_CM]
-* [Build Instructions for Google Nexus 5][CyanogenMod_Build_Nexus5] (example device, search the wiki for other devices)
+* [Build Instructions for Google Nexus 5][LineageOS_Build_Nexus5] (example device, search the wiki for other devices)
 
 ### More information
 
@@ -57,8 +56,7 @@ For further information, check the following links:
 [LineageOS]:                   http://lineageos.org/
 [Docker_Installation]:         https://www.docker.io/gettingstarted/
 [Screen_Shortcuts]:            http://www.pixelbeat.org/lkdb/screen.html
-[CyanogenMod_Building_Basics]: http://wiki.cyanogenmod.org/w/Doc:_Building_Basics
-[Learning_to_Build_CM]:        http://wiki.cyanogenmod.org/w/Development#Learning_To_Build_CM
-[CyanogenMod_Build_Nexus5]:    http://wiki.cyanogenmod.org/w/Build_for_hammerhead
+[CyanogenMod_Building_Basics]: https://web-beta.archive.org/web/20161224192643/http://wiki.cyanogenmod.org/w/Development
+[LineageOS_Build_Nexus5]:    https://wiki.lineageos.org/devices/hammerhead/build
 [Discussion thread @ XDA developers]: http://forum.xda-developers.com/showthread.php?t=2650345
 [dotcloud/docker#2224]:        https://github.com/dotcloud/docker/issues/2224
