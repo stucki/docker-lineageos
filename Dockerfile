@@ -25,8 +25,8 @@ ARG hostuid=1000
 ARG hostgid=1000
 
 RUN \
-    groupadd build -g $hostgid && \
-    useradd build -g $hostgid -u $hostuid && \
+    groupadd --gid $hostgid --force build && \
+    useradd --gid $hostgid --uid $hostuid --non-unique build && \
     rsync -a /etc/skel/ /home/build/
 
 RUN mkdir /home/build/bin
