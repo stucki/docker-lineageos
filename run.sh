@@ -2,14 +2,8 @@
 
 cd $(dirname $0)
 
-if [[ $OSTYPE == "darwin"* ]]; then
-	SOURCE=$(stat -f %N $(pwd)/android)
-	CCACHE=$(stat -f %N $(pwd)/ccache)
-else
-	SOURCE=$(readlink -f $(pwd)/android)
-	CCACHE=$(readlink -f $(pwd)/ccache)
-fi
-
+SOURCE=$(pwd)/android
+CCACHE=$(pwd)/ccache
 CONTAINER_HOME=/home/build
 CONTAINER=lineageos
 REPOSITORY=stucki/lineageos
