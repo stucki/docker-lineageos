@@ -1,15 +1,11 @@
-#!/bin/bash
+#!/usr/bin/env bash
+
+set -euo pipefail
 
 cd $(dirname $0)
 
-if [[ $OSTYPE == "darwin"* ]]; then
-	SOURCE=$(stat -f %N $(pwd)/android)
-	CCACHE=$(stat -f %N $(pwd)/ccache)
-else
-	SOURCE=$(readlink -f $(pwd)/android)
-	CCACHE=$(readlink -f $(pwd)/ccache)
-fi
-
+SOURCE=$(pwd)/android
+CCACHE=$(pwd)/ccache
 CONTAINER_HOME=/home/build
 CONTAINER=lineageos
 REPOSITORY=stucki/lineageos
@@ -51,17 +47,12 @@ elif [[ $FORCE_BUILD = 1 ]] || ! echo "$IMAGE_EXISTS" | grep -q "$TAG"; then
 	USERID=$(id -u)
 	GROUPID=$(id -g)
 	docker build -t $REPOSITORY:$TAG --build-arg hostuid=$USERID --build-arg hostgid=$GROUPID .
-	OK=$?
 
 	# After successful build, delete existing containers
 	IS_EXISTING=$(docker inspect -f '{{.Id}}' $CONTAINER 2>/dev/null)
-	if [[ $OK -eq 0 ]] && [[ -n "$IS_EXISTING" ]]; then
+	if [[ -n $IS_EXISTING ]]; then
 		docker rm $CONTAINER
 	fi
-fi
-
-if [[ $OK -ne 0 ]]; then
-	exit 1
 fi
 
 # With the given name $CONTAINER, reconnect to running container, start
