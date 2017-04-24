@@ -49,7 +49,7 @@ elif [[ $FORCE_BUILD = 1 ]] || ! echo "$IMAGE_EXISTS" | grep -q "$TAG"; then
 	docker build -t $REPOSITORY:$TAG --build-arg hostuid=$USERID --build-arg hostgid=$GROUPID .
 
 	# After successful build, delete existing containers
-	IS_EXISTING=$(docker inspect -f '{{.Id}}' $CONTAINER 2>/dev/null)
+	IS_EXISTING=$(docker inspect -f '{{.Id}}' $CONTAINER 2>/dev/null) || true
 	if [[ -n $IS_EXISTING ]]; then
 		docker rm $CONTAINER
 	fi
@@ -57,7 +57,7 @@ fi
 
 # With the given name $CONTAINER, reconnect to running container, start
 # an existing/stopped container or run a new one if one does not exist.
-IS_RUNNING=$(docker inspect -f '{{.State.Running}}' $CONTAINER 2>/dev/null)
+IS_RUNNING=$(docker inspect -f '{{.State.Running}}' $CONTAINER 2>/dev/null) || true
 if [[ $IS_RUNNING == "true" ]]; then
 	docker attach $CONTAINER
 elif [[ $IS_RUNNING == "false" ]]; then
