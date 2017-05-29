@@ -39,14 +39,13 @@ if [ $? -ne 0 ]; then
 	echo "docker command not found"
 	exit $?
 elif [[ $FORCE_BUILD = 1 ]] || ! echo "$IMAGE_EXISTS" | grep -q "$TAG"; then
-	# Pull Ubuntu image to be sure it's up to date
-	echo "Fetching Docker \"ubuntu\" image..."
-	docker pull ubuntu:16.04
-
 	echo "Building Docker image $REPOSITORY:$TAG..."
-	USERID=$(id -u)
-	GROUPID=$(id -g)
-	docker build -t $REPOSITORY:$TAG --build-arg hostuid=$USERID --build-arg hostgid=$GROUPID .
+	docker build \
+		--pull \
+		-t $REPOSITORY:$TAG \
+		--build-arg hostuid=$(id -u) \
+		--build-arg hostgid=$(id -g) \
+		.
 
 	# After successful build, delete existing containers
 	IS_EXISTING=$(docker inspect -f '{{.Id}}' $CONTAINER 2>/dev/null) || true
