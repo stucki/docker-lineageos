@@ -6,7 +6,9 @@ if [ ! -f ${CCACHE_DIR}/ccache.conf ]; then
 	ccache -M ${CCACHE_SIZE}
 fi
 
-export USER="build"
+# in Docker, the USER variable is unset by default
+# but some programs (like jack toolchain) rely on it
+export USER="$(whoami)"
 
 # Launch screen session
 screen -s /bin/bash

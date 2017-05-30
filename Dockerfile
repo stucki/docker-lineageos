@@ -88,7 +88,7 @@ RUN chown -R build:build /home/build
 VOLUME /home/build/android
 VOLUME /srv/ccache
 
-CMD /home/build/startup.sh
-
 USER build
 WORKDIR /home/build/android
+
+CMD /home/build/startup.sh
