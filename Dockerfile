@@ -3,7 +3,13 @@
 FROM ubuntu:16.04
 MAINTAINER Michael Stucki <michael@stucki.io>
 
+
 ENV \
+# ccache specifics
+    CCACHE_SIZE=50G \
+    CCACHE_DIR=/srv/ccache \
+    USE_CCACHE=1 \
+    CCACHE_COMPRESS=1 \
 # Extra include PATH, it may not include /usr/local/(s)bin on some systems
     PATH=$PATH:/usr/local/bin/
 
@@ -78,10 +84,6 @@ RUN chmod a+x /home/build/startup.sh
 
 # Fix ownership
 RUN chown -R build:build /home/build
-
-# Set global variables
-ADD android-env-vars.sh /etc/android-env-vars.sh
-RUN echo "source /etc/android-env-vars.sh" >> /etc/bash.bashrc
 
 VOLUME /home/build/android
 VOLUME /srv/ccache
