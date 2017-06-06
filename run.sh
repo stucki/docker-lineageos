@@ -53,7 +53,7 @@ elif [[ $FORCE_BUILD = 1 ]] || ! echo "$IMAGE_EXISTS" | grep -q "$TAG"; then
 	# After successful build, delete existing containers
 	IS_EXISTING=$(docker inspect -f '{{.Id}}' $CONTAINER 2>/dev/null) || true
 	if [[ -n $IS_EXISTING ]]; then
-		docker rm $CONTAINER
+		docker rm $CONTAINER >/dev/null
 	fi
 fi
 
