@@ -1,12 +1,14 @@
 #!/bin/sh
 
 # Initialize ccache if needed
-if [ ! -f /srv/ccache/ccache.conf ]; then
+if [ ! -f ${CCACHE_DIR}/ccache.conf ]; then
 	echo "Initializing ccache in /srv/ccache..."
-	CCACHE_DIR=/srv/ccache ccache -M 50G
+	ccache -M ${CCACHE_SIZE}
 fi
 
-export USER="build"
+# in Docker, the USER variable is unset by default
+# but some programs (like jack toolchain) rely on it
+export USER="$(whoami)"
 
 # Launch screen session
 screen -s /bin/bash

@@ -34,16 +34,18 @@ while [[ $# > 0 ]]; do
 done
 
 # Create shared folders
+# Although Docker would create non-existing directories on the fly,
+# we need to have them owned by the user (and not root), to be able
+# to write in them, which is a necessity for startup.sh
 mkdir -p $SOURCE
 mkdir -p $CCACHE
 
+command -v docker >/dev/null \
+	|| { echo "command 'docker' not found."; exit 1; }
+
 # Build image if needed
-IMAGE_EXISTS=$(docker images $REPOSITORY)
-if [ $? -ne 0 ]; then
-	echo "docker command not found"
-	exit $?
-elif [[ $FORCE_BUILD = 1 ]] || ! echo "$IMAGE_EXISTS" | grep -q "$TAG"; then
-	echo "Building Docker image $REPOSITORY:$TAG..."
+if [[ $FORCE_BUILD = 1 ]] || ! docker inspect $REPOSITORY:$TAG &>/dev/null; then
+
 	docker build \
 		--pull \
 		-t $REPOSITORY:$TAG \
@@ -52,9 +54,8 @@ elif [[ $FORCE_BUILD = 1 ]] || ! echo "$IMAGE_EXISTS" | grep -q "$TAG"; then
 		.
 
 	# After successful build, delete existing containers
-	IS_EXISTING=$(docker inspect -f '{{.Id}}' $CONTAINER 2>/dev/null) || true
-	if [[ -n $IS_EXISTING ]]; then
-		docker rm $CONTAINER
+	if docker inspect $CONTAINER &>/dev/null; then
+		docker rm $CONTAINER >/dev/null
 	fi
 fi
 

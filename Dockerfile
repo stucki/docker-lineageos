@@ -3,6 +3,16 @@
 FROM ubuntu:16.04
 MAINTAINER Michael Stucki <michael@stucki.io>
 
+
+ENV \
+# ccache specifics
+    CCACHE_SIZE=50G \
+    CCACHE_DIR=/srv/ccache \
+    USE_CCACHE=1 \
+    CCACHE_COMPRESS=1 \
+# Extra include PATH, it may not include /usr/local/(s)bin on some systems
+    PATH=$PATH:/usr/local/bin/
+
 RUN sed -i 's/main$/main universe/' /etc/apt/sources.list \
  && export DEBIAN_FRONTEND=noninteractive \
  && apt-get update \
@@ -64,9 +74,8 @@ RUN \
     useradd --gid $hostgid --uid $hostuid --non-unique build && \
     rsync -a /etc/skel/ /home/build/
 
-RUN mkdir /home/build/bin
-RUN curl https://storage.googleapis.com/git-repo-downloads/repo > /home/build/bin/repo
-RUN chmod a+x /home/build/bin/repo
+RUN curl https://storage.googleapis.com/git-repo-downloads/repo > /usr/local/bin/repo \
+ && chmod a+x /usr/local/bin/repo
 
 # Add sudo permission
 RUN echo "build ALL=NOPASSWD: ALL" > /etc/sudoers.d/build
@@ -77,14 +86,10 @@ RUN chmod a+x /home/build/startup.sh
 # Fix ownership
 RUN chown -R build:build /home/build
 
-# Set global variables
-ADD android-env-vars.sh /etc/android-env-vars.sh
-RUN echo "source /etc/android-env-vars.sh" >> /etc/bash.bashrc
-
 VOLUME /home/build/android
 VOLUME /srv/ccache
 
-CMD /home/build/startup.sh
-
 USER build
 WORKDIR /home/build/android
+
+CMD /home/build/startup.sh
