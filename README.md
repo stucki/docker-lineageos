@@ -26,6 +26,7 @@ The `run.sh` script accepts the following switches:
 
 * -u|--enable-usb - runs the container in privileged mode (this way you can use adb right from the container)
 * -r|--rebuild - force rebuild the image from scratch
+* -ws|--with-su - Sets the WITH_SU environment variable to true (your builds will include the su binary)
 
 The container uses "screen" to run the shell. This means that you will be able to open additional shells using [screen keyboard shortcuts][Screen_Shortcuts].
 

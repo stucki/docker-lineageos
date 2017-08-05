@@ -12,6 +12,7 @@ REPOSITORY=stucki/lineageos
 TAG=cm-14.1
 FORCE_BUILD=0
 PRIVILEGED=
+ENVIRONMENT=
 
 while [[ $# > 0 ]]; do
 	key="$1"
@@ -21,6 +22,9 @@ while [[ $# > 0 ]]; do
 			;;
 		-u|--enable-usb)
 			PRIVILEGED="--privileged -v /dev/bus/usb:/dev/bus/usb"
+			;;
+		-ws|--with-su)
+			ENVIRONMENT="-e WITH_SU=true"
 			;;
 		*)
 			shift # past argument or value
@@ -63,7 +67,7 @@ if [[ $IS_RUNNING == "true" ]]; then
 elif [[ $IS_RUNNING == "false" ]]; then
 	docker start -i $CONTAINER
 else
-	docker run $PRIVILEGED -v $SOURCE:$CONTAINER_HOME/android:Z -v $CCACHE:/srv/ccache:Z -i -t --name $CONTAINER $REPOSITORY:$TAG
+	docker run $PRIVILEGED -v $SOURCE:$CONTAINER_HOME/android:Z -v $CCACHE:/srv/ccache:Z -i -t $ENVIRONMENT --name $CONTAINER $REPOSITORY:$TAG
 fi
 
 exit $?

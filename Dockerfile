@@ -62,6 +62,7 @@ RUN sed -i 's/main$/main universe/' /etc/apt/sources.list \
       screen \
       sudo \
       tig \
+      vim \
       wget \
  && rm -rf /var/lib/apt/lists/*
 
@@ -73,7 +74,7 @@ RUN \
     useradd --gid $hostgid --uid $hostuid --non-unique build && \
     rsync -a /etc/skel/ /home/build/
 
-RUN curl http://commondatastorage.googleapis.com/git-repo-downloads/repo > /usr/local/bin/repo \
+RUN curl https://storage.googleapis.com/git-repo-downloads/repo > /usr/local/bin/repo \
  && chmod a+x /usr/local/bin/repo
 
 # Add sudo permission
