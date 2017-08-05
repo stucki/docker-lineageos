@@ -64,7 +64,7 @@ RUN \
     rsync -a /etc/skel/ /home/build/
 
 RUN mkdir /home/build/bin
-RUN curl http://commondatastorage.googleapis.com/git-repo-downloads/repo > /home/build/bin/repo
+RUN curl https://storage.googleapis.com/git-repo-downloads/repo > /home/build/bin/repo
 RUN chmod a+x /home/build/bin/repo
 
 # Add sudo permission
