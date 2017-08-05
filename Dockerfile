@@ -52,6 +52,7 @@ RUN sed -i 's/main$/main universe/' /etc/apt/sources.list \
       screen \
       sudo \
       tig \
+      vim \
       wget \
  && rm -rf /var/lib/apt/lists/*
 
