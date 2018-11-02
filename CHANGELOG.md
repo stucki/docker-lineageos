@@ -4,6 +4,11 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased][unreleased]
 
+## [0.8.0] - 2018-11-19
+### Added
+- Update build dependencies
+- Adjust LineageOS version to lineage-15.1
+
 ## [0.7.0] - 2017-08-05
 ### Added
 - Rename the project from "docker-cyanogenmod" to "docker-lineageos"
