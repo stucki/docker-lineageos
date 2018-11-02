@@ -38,7 +38,7 @@ If you're on Linux and want to use adb from within the container running with `-
 ### How to build LineageOS for your device
 
 ```
-repo init -u git://github.com/lineageos/android.git -b cm-14.1
+repo init -u git://github.com/lineageos/android.git -b lineage-15.1
 repo sync -c -j 16
 source build/envsetup.sh
 breakfast <device codename>   # example: breakfast grouper
