@@ -19,46 +19,45 @@ RUN sed -i 's/main$/main universe/' /etc/apt/sources.list \
  && apt-get upgrade -y \
  && apt-get install -y \
 # Install build dependencies (source: https://wiki.cyanogenmod.org/w/Build_for_bullhead)
+      bc \
       bison \
       build-essential \
+      ccache \
       curl \
       flex \
+      g++-multilib \
+      gcc-multilib \
       git \
       gnupg \
       gperf \
-      libesd0-dev \
+      imagemagick \
+      lib32ncurses5-dev \
+      lib32readline-dev \
+      lib32z1-dev \
       liblz4-tool \
       libncurses5-dev \
       libsdl1.2-dev \
+      libssl-dev \
       libwxgtk3.0-dev \
       libxml2 \
       libxml2-utils \
       lzop \
-      maven \
-      openjdk-8-jdk \
       pngcrush \
+      rsync \
       schedtool \
       squashfs-tools \
       xsltproc \
       zip \
       zlib1g-dev \
-# For 64-bit systems
-      g++-multilib \
-      gcc-multilib \
-      lib32ncurses5-dev \
-      lib32readline6-dev \
-      lib32z1-dev \
+# Install Java Development Kit
+      openjdk-8-jdk \
 # Install additional packages which are useful for building Android
       android-tools-adb \
       android-tools-fastboot \
       bash-completion \
-      bc \
       bsdmainutils \
-      ccache \
       file \
-      imagemagick \
       nano \
-      rsync \
       screen \
       sudo \
       tig \
